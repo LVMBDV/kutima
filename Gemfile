@@ -8,6 +8,7 @@ ruby '3.0.2'
 gem 'bootsnap', require: false
 gem 'hotwire-rails'
 gem 'jbuilder'
+gem 'newrelic_rpm'
 gem 'pg'
 gem 'puma'
 gem 'rails'

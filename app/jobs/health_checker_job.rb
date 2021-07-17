@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
+##
+# Job that validates integration with job service.
 class HealthCheckerJob < ApplicationJob
   queue_as :default
 
-  def perform(*_args)
-    logger.info 'Health check successful'
+  def perform(*args)
+    EventLogger::Log.call(:debug, 'monitoring.job-integration.successful', message: args[0])
   end
 end
