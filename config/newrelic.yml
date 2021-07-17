@@ -1,5 +1,6 @@
 common: &default_settings
-license_key: <%= ENV['NEW_RELIC_LICENSE_KEY'] %>
+  license_key: '<%= ENV['NEW_RELIC_LICENSE_KEY'] %>'
+  app_name: '<%= ENV['NEW_RELIC_APP_NAME'] %>'
   distributed_tracing:
     enabled: true
   log_level: info
@@ -12,10 +13,5 @@ test:
   <<: *default_settings
   monitor_mode: false
 
-staging:
-  <<: *default_settings
-  app_name: habit-tracker-rails-staging
-
 production:
   <<: *default_settings
-  app_name: habit-tracker-rails-prod
