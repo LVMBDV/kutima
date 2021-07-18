@@ -1,12 +1,13 @@
 {
   "environments": {
     "test": {
+      "image": "heroku/ruby",
       "buildpacks": [
         { "url": "heroku/ruby" }
       ],
       "addons":[
-         "heroku-redis:in-dyno",
-         "heroku-postgresql:in-dyno"
+         "heroku-postgresql:in-dyno",
+         "heroku-redis:in-dyno"
       ]
     }
   }
