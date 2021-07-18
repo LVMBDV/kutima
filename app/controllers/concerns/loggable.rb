@@ -8,8 +8,8 @@ module Loggable
   def log_event(level, event, **data)
     data_to_log = data_from_request.merge(data)
     EventLogger::Log.call(level, event, **data_to_log)
-  rescue EventLogger::UnregisteredEvent, EventLogger::InvalidLoggerLevel => e
-    log_event :error, 'monitoring.event-logger.failure', message: e.message
+  rescue EventLogger::UnregisteredEvent, EventLogger::InvalidLoggerLevel => error
+    log_event :error, 'monitoring.event-logger.failure', message: error.message
   end
 
   def data_from_request

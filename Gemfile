@@ -30,6 +30,9 @@ group :development do
   gem 'rack-mini-profiler'
   gem 'reek'
   gem 'rubocop'
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'spring'
   gem 'web-console'
 end

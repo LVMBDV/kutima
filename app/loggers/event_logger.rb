@@ -26,11 +26,16 @@ module EventLogger
 
     def self.call(*tags, **params)
       level, event = *tags
-      raise EventLogger::InvalidLoggerLevel unless WHITELISTED_LOGGER_LEVELS.include?(level)
-      raise EventLogger::UnregisteredEvent unless REGISTERED_EVENTS.include?(event)
-
+      validate_event(level, event)
       logger = ActiveSupport::TaggedLogging.new(Logger.new($stdout))
       logger.tagged("#{level.to_s.upcase} | #{DateTime.current} | #{event}") { logger.send(level, **params.as_json) }
+    end
+
+    private
+
+    def validate_event(level, event)
+      raise EventLogger::InvalidLoggerLevel unless WHITELISTED_LOGGER_LEVELS.include?(level)
+      raise EventLogger::UnregisteredEvent unless REGISTERED_EVENTS.include?(event)
     end
   end
 end
