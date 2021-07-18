@@ -1,0 +1,9 @@
+{
+  "environments": {
+    "test": {
+      "buildpacks": [
+        { "url": "heroku/ruby" }
+      ]
+    }
+  }
+}
