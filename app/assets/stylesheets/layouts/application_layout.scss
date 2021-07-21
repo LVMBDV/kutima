@@ -1,0 +1,135 @@
+.Navbar {
+  text-transform: uppercase;
+  background-color: white;
+
+  @include breakpoint-l {
+    display: flex;
+  }
+
+  &__brand {
+    color: $black;
+    font-size: 150%;
+    font-family: $heading-bold-font-family;
+  }
+
+  &__header {
+    width: 100%;
+    margin: 0;
+    padding: spacing-size(2) 0;
+
+    @include breakpoint-l {
+      flex: 30%;
+    }
+  }
+
+  &__link {
+    display: block;
+    font-size: 125%;
+    text-decoration: none;
+    padding-top: spacing-size(3);
+    padding-bottom: spacing-size(3);
+
+    @include breakpoint-l {
+      display: inline;
+      padding: 0 spacing-size(3);
+    }
+  }
+
+  &__menu {
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transform: translateX(-200%);
+    transition: transform 0.6s ease;
+    z-index: 9;
+
+    @include breakpoint-l {
+      position: relative;
+      flex: 70%;
+      align-self: center;
+      transform: none;
+      transition: none;
+    }
+
+    &--opened {
+      transform: translateX(0);
+    }
+
+    & > ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      & > li {
+        @include breakpoint-l {
+          display: inline;
+        }
+      }
+    }
+  }
+
+  &__toggle {
+    font-size: 150%;
+    text-decoration: none;
+    padding: spacing-size(2);
+
+    @include breakpoint-l {
+      visibility: hidden;
+    }
+
+    &:focus {
+      outline-color: transparent;
+    }
+
+    & > i {
+      color: $black;
+    }
+  }
+}
+
+.Footer {
+  margin-top: spacing-size(6);
+  margin-bottom: spacing-size(6);
+
+  &__brand-ribbon {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    text-align: center;
+
+    @include breakpoint-s {
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+    margin: spacing-size(4);
+  }
+
+  &__logo {
+    width: 90%;
+    max-width: 250px;
+
+    @include breakpoint-s {
+      width: 90%;
+    }
+  }
+
+  &__link {
+    margin: spacing-size(1);
+    padding: spacing-size(1);
+  }
+
+  &__link-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: spacing-size(5);
+
+    @include breakpoint-s {
+      flex-flow: row wrap;
+    }
+  }
+}

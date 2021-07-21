@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>HabitTrackerRails</title>
+    <%= tag.title I18n.t('layout.title') %>
+    <title>Kutima</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +12,8 @@
   </head>
 
   <body>
+    <%= render 'layouts/partials/navbar' %>
     <%= yield %>
+    <%= render 'layouts/partials/footer' %>
   </body>
 </html>

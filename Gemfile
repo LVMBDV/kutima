@@ -15,6 +15,7 @@ gem 'rails'
 gem 'redis'
 gem 'sass-rails'
 gem 'sidekiq'
+gem 'view_component', require: 'view_component/engine'
 gem 'webpacker'
 
 group :development, :test do

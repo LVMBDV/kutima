@@ -1,0 +1,13 @@
+<%= tag.nav class: 'Navbar', data: { controller: 'navbar' } do %>
+  <div class="Navbar__header">
+    <%= tag.a 'Menu', href: '#', class: 'Navbar__toggle', data: { action: 'click->navbar#toggleMenuState' } %>
+    <%= tag.span I18n.t('layout.navbar.brand'), class: 'Navbar__brand' %>
+  </div>
+  <%= tag.div class: 'Navbar__menu', data: { target: 'navbar.menu' } do %>
+    <ul>
+      <% I18n.t('layout.navbar.links').each do |link| %>
+        <li><%= link_to link[:name], send(link[:path].to_sym), class: 'Link--dark Navbar__link' %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

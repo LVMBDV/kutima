@@ -1,0 +1,10 @@
+<footer class="Footer">
+  <div class="Footer__link-list">
+    <% I18n.t('layout.footer.links').each do |link| %>
+      <%= link_to link[:name], send(link[:path].to_sym), class: 'Footer__link Link--dark' %>
+    <% end %>
+  </div>
+  <div class="Footer__brand-ribbon">
+    <%= tag.p I18n.t('layout.footer.copyright-statement', year: Date.current.year).html_safe, class: 'Footer__copyright' %>
+  </div>
+</footer>

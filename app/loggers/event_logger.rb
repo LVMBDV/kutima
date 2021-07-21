@@ -31,11 +31,11 @@ module EventLogger
       logger.tagged("#{level.to_s.upcase} | #{DateTime.current} | #{event}") { logger.send(level, **params.as_json) }
     end
 
-    private
-
-    def validate_event(level, event)
+    def self.validate_event(level, event)
       raise EventLogger::InvalidLoggerLevel unless WHITELISTED_LOGGER_LEVELS.include?(level)
       raise EventLogger::UnregisteredEvent unless REGISTERED_EVENTS.include?(event)
     end
+
+    private_class_method :validate_event
   end
 end
