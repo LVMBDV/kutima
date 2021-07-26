@@ -7,28 +7,54 @@ en:
         authenticated:
           - name: 'Dashboard'
             path: dashboard_path
+            method: 'get'
+            icon_class: 'fas fa-chart-line'
+          - name: 'Logout'
+            path: auth_logout_path
+            method: 'get'
+            icon_class: 'fas fa-sign-out-alt'
         unauthenticated:
           - name: 'Home'
             path: root_path
-        login: 'Login'
-        logout: 'Logout'
+            method: 'get'
+            icon_class: 'fas fa-home'
+          - name: 'Login'
+            path: 'auth/auth0'
+            method: 'post'
+            icon_class: 'fas fa-sign-in-alt'
     footer:
       links:
         authenticated:
           - name: 'Dashboard'
             path: dashboard_path
+            method: 'get'
+          - name: 'Logout'
+            path: auth_logout_path
+            method: 'get'
         unauthenticated:
           - name: 'Home'
             path: root_path
-        login: 'Login'
-        logout: 'Logout'
+            method: 'get'
+          - name: 'Login'
+            path: 'auth/auth0'
+            method: 'post'
       copyright-statement: 'Made with ❤️ by Dick Davis &copy; Copyright %{year}'
   pages:
     home:
-      title: "Home"
-      body: "This is filler content."
+      title: 'Kutima'
+      lede: 'Optimize yourself.'
+      features:
+        - title: 'Identity'
+          body: 'Affirm who you are. Make bold statements about the type of person you are, and then become that person.'
+        - title: 'Growth'
+          body: 'Gradual changes compound over time. Challenge yourself to be a little further on the path each day.'
+        - title: 'Insights'
+          body: 'Gain insights from measuring your performance, and then use those insights to adjust your plan.'
+      cta:
+        title: 'Get Started'
+        button: 'Sign Up'
     dashboard:
-      title: "Dashboard"
+      title: 'Dashboard'
   messages:
     failure:
       needs-auth: 'You need to be logged in.'

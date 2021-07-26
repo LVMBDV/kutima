@@ -1,6 +1,18 @@
-<div class="Card">
-  <div class="Card__body">
-    <%= tag.p I18n.t('pages.home.title'), class: 'Card__title' %>
-    <%= tag.p I18n.t('pages.home.body') %>
-  </div>
+<div class="Hero--inverted">
+  <%= tag.h1 I18n.t('pages.home.title'), class: 'Hero__headline' %>
+  <%= tag.p I18n.t('pages.home.lede'), class: 'Hero__lede' %>
+</div>
+<div class="CardDeck">
+  <% I18n.t('pages.home.features').each do |feature| %>
+    <div class="Card--small FeatureCard">
+      <div class="Card__body">
+        <%= tag.p feature[:title], class: 'Card__title' %>
+        <%= tag.p feature[:body] %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="Hero">
+  <%= tag.h1 I18n.t('pages.home.cta.title'), class: 'Hero__headline Hero__headline--muted' %>
+  <%= button_to I18n.t('pages.home.cta.button'), 'auth/auth0', method: :post, class: 'Button--solid-dark' %>
 </div>

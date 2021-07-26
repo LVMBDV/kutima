@@ -12,6 +12,6 @@ describe 'home/index.html.erb', type: :view do
   end
 
   it 'renders the home page with body text' do
-    expect(rendered).to match(/#{I18n.t('pages.home.body')}/)
+    expect(rendered).to match(/#{I18n.t('pages.home.lede')}/)
   end
 end

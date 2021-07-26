@@ -1,17 +1,16 @@
 <%= tag.nav class: 'Navbar', data: { controller: 'navbar' } do %>
   <div class="Navbar__header">
-    <%= tag.a 'Menu', href: '#', class: 'Navbar__toggle', data: { action: 'click->navbar#toggleMenuState' } %>
+    <%= link_to '#', class: 'Navbar__toggle', data: { action: 'click->navbar#toggleMenuState' } do %>
+      <i class="fas fa-bars"></i>
+    <% end %>
     <%= tag.span I18n.t('layout.navbar.brand'), class: 'Navbar__brand' %>
   </div>
   <%= tag.div class: 'Navbar__menu', data: { target: 'navbar.menu' } do %>
     <ul>
     <% I18n.t("layout.navbar.links.#{'un' unless signed_in?}authenticated").each do |link| %>
-      <%= link_to link[:name], send(link[:path].to_sym), class: 'Navbar__link Link--dark' %>
-    <% end %>
-    <% if signed_in? %>
-      <%= link_to 'Logout', 'auth/logout', method: :get, class: 'Navbar__link Link--dark' %>
-    <% else %>
-      <%= link_to 'Login', 'auth/auth0', method: :post, class: 'Navbar__link Link--dark' %>
+      <%= link_to link_from_config(link[:path]), method: link[:method].to_sym, class: 'Navbar__link Link--dark' do %>
+        <i class="<%= link[:icon_class] %>"></i>&nbsp;<%= link[:name] %>
+      <% end %>
     <% end %>
     </ul>
   <% end %>
