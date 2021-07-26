@@ -5,6 +5,7 @@ require File.expand_path('../config/environment', __dir__)
 require 'spec_helper'
 require 'support/factory_bot'
 require 'database_cleaner'
+require 'webmock/rspec'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -18,9 +19,14 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
+OmniAuth.config.test_mode = true
+
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.include Utils::Auth
+  config.include Mocks::Users
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

@@ -1,7 +1,12 @@
 <footer class="Footer">
   <div class="Footer__link-list">
-    <% I18n.t('layout.footer.links').each do |link| %>
+    <% I18n.t("layout.footer.links.#{'un' unless signed_in?}authenticated").each do |link| %>
       <%= link_to link[:name], send(link[:path].to_sym), class: 'Footer__link Link--dark' %>
+    <% end %>
+    <% if signed_in? %>
+      <%= link_to 'Logout', 'auth/logout', method: :get, class: 'Footer__link Link--dark' %>
+    <% else %>
+      <%= link_to 'Login', 'auth/auth0', method: :post, class: 'Footer__link Link--dark' %>
     <% end %>
   </div>
   <div class="Footer__brand-ribbon">

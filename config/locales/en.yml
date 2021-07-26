@@ -4,22 +4,31 @@ en:
     navbar:
       brand: 'Kutima'
       links:
-        - name: 'Home'
-          path: root_path
-        - name: 'Sign up'
-          path: root_path
-        - name: 'Sign in'
-          path: root_path
+        authenticated:
+          - name: 'Dashboard'
+            path: dashboard_path
+        unauthenticated:
+          - name: 'Home'
+            path: root_path
+        login: 'Login'
+        logout: 'Logout'
     footer:
       links:
-        - name: 'Home'
-          path: root_path
-        - name: 'Sign up'
-          path: root_path
-        - name: 'Sign in'
-          path: root_path
+        authenticated:
+          - name: 'Dashboard'
+            path: dashboard_path
+        unauthenticated:
+          - name: 'Home'
+            path: root_path
+        login: 'Login'
+        logout: 'Logout'
       copyright-statement: 'Made with ❤️ by Dick Davis &copy; Copyright %{year}'
   pages:
     home:
       title: "Home"
       body: "This is filler content."
+    dashboard:
+      title: "Dashboard"
+  messages:
+    failure:
+      needs-auth: 'You need to be logged in.'

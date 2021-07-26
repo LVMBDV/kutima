@@ -6,6 +6,8 @@
 class HealthCheckController < ApplicationController
   include Loggable
 
+  skip_before_action :authenticate_user
+
   def check
     log_event :info, 'monitoring.health-check.success'
     render json: { message: 'Application healthy.' }, status: :ok
