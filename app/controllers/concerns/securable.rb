@@ -38,7 +38,7 @@ module Securable
     @auth0_client ||= Auth0Client.new(
       client_id: ENV.fetch('AUTH0_CLIENT_ID'),
       client_secret: ENV.fetch('AUTH0_CLIENT_SECRET'),
-      domain: ENV.fetch('AUTH0_DOMAIN'),
+      domain: (ENV['AUTH0_API_DOMAIN'] || ENV.fetch('AUTH0_DOMAIN')),
       api_version: 2
     )
   end
