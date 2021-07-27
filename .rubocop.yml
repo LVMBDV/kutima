@@ -3,5 +3,7 @@ require:
   - rubocop-rails
   - rubocop-rspec
 
+AllCops:
+  NewCops: enable
 Naming/RescuedExceptionsVariableName:
   Enabled: false

@@ -20,7 +20,7 @@ module EventLogger
   ##
   # Outputs event and related data logs.
   class Log
-    WHITELISTED_LOGGER_LEVELS = %i[debug info warn error fatal].freeze
+    PERMITTED_LOGGER_LEVELS = %i[debug info warn error fatal].freeze
     REGISTERED_EVENTS = %w[testing.event monitoring.event-logger.failure monitoring.health-check.success
                            monitoring.job-integration.successful].freeze
 
@@ -32,7 +32,7 @@ module EventLogger
     end
 
     def self.validate_event(level, event)
-      raise EventLogger::InvalidLoggerLevel unless WHITELISTED_LOGGER_LEVELS.include?(level)
+      raise EventLogger::InvalidLoggerLevel unless PERMITTED_LOGGER_LEVELS.include?(level)
       raise EventLogger::UnregisteredEvent unless REGISTERED_EVENTS.include?(event)
     end
 

@@ -1,0 +1,25 @@
+PreCommit:
+  CustomRuboCop:
+    enabled: true
+    on_warn: fail # Treat all warnings as failures
+    command: ['docker-compose', 'exec', '-T', 'web', 'bundle', 'exec', 'rubocop', '.']
+
+  Reek:
+    enabled: true
+    command: ['docker-compose', 'exec', '-T', 'web', 'bundle', 'exec', 'reek']
+
+PrePush:
+  CustomBrakeman:
+    enabled: true
+    command: ['docker-compose', 'exec', '-T', 'web', 'bundle', 'exec', 'brakeman', '--force']
+
+  RSpec:
+    enabled: true
+    command: ['docker-compose', 'exec', '-T', 'web', 'bundle', 'exec', 'rspec']
+
+PostCheckout:
+  ALL:
+    quiet: true
+
+  IndexTags:
+    enabled: true

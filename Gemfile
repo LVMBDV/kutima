@@ -29,7 +29,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'brakeman'
   gem 'listen'
+  gem 'overcommit'
   gem 'pry-rails'
   gem 'rack-mini-profiler'
   gem 'reek'
