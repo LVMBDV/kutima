@@ -6,6 +6,7 @@ class Auth0Controller < ApplicationController
   include Utils
 
   skip_before_action :authenticate_user
+  skip_before_action :onboard_user
 
   def callback
     session_from_request

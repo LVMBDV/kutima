@@ -1,0 +1,13 @@
+<%= form_with model: profile, class: 'Form' do |f| %>
+  <%= tag.div class: 'Form__group--boxed' do %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  <% end %>
+  <%= tag.div class: 'Form__group--boxed' do %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  <% end %>
+  <%= tag.div class: 'Form__action' do %>
+    <%= f.submit submit_text, class: 'Button--solid-primary' %>
+  <% end %>
+<% end %>

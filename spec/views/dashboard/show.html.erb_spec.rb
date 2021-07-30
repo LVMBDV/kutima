@@ -3,7 +3,11 @@
 require 'rails_helper'
 
 describe 'dashboard/show.html.erb', type: :view do
+  let(:user) { mock_user }
+
   before do
+    @user = user
+    create(:profile, user: user)
     render
   end
 

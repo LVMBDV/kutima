@@ -16,6 +16,11 @@ module Utils
         stub_user_roles(roles)
       end
 
+      def logout
+        OmniAuth.config.mock_auth[:auth0] = :invalid_credentials
+        Rails.application.env_config['omniauth.auth'] = nil
+      end
+
       private
 
       def authenticate_with_provider
@@ -52,7 +57,7 @@ module Utils
               picture: 'auth0|TEST',
               updated_at: '',
               iss: '',
-              sub: 'test',
+              sub: user.auth_provider_id,
               aud: '',
               iat: '',
               exp: '',
@@ -69,7 +74,7 @@ module Utils
       end
 
       def stub_user_info
-        WebMock::API.stub_request(:get, "https://#{ENV.fetch('AUTH0_DOMAIN')}/api/v2/users/test?include_fields=true")
+        WebMock::API.stub_request(:get, "https://#{ENV.fetch('AUTH0_DOMAIN')}/api/v2/users/#{user.auth_provider_id}?include_fields=true")
                     .with(headers: { 'Content-Type' => 'application/json' })
                     .to_return(status: 200,
                                body: { data: user }.to_json,
@@ -77,7 +82,7 @@ module Utils
       end
 
       def stub_user_roles(roles)
-        WebMock::API.stub_request(:get, "https://#{ENV.fetch('AUTH0_DOMAIN')}/api/v2/users/test/roles")
+        WebMock::API.stub_request(:get, "https://#{ENV.fetch('AUTH0_DOMAIN')}/api/v2/users/#{user.auth_provider_id}/roles")
                     .with(headers: { 'Content-Type' => 'application/json' })
                     .to_return(status: 200,
                                body: { data: roles }.to_json,

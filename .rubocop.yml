@@ -7,3 +7,9 @@ AllCops:
   NewCops: enable
 Naming/RescuedExceptionsVariableName:
   Enabled: false
+Style/Documentation:
+  Exclude:
+    - 'db/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

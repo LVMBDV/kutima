@@ -4,6 +4,11 @@
 # Controller for home page.
 class HomeController < ApplicationController
   skip_before_action :authenticate_user
+  skip_before_action :onboard_user
 
-  def index; end
+  def index
+    redirect_to dashboard_path and return if signed_in?
+
+    render :index
+  end
 end

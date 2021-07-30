@@ -1,0 +1,13 @@
+<div class="Card__body">
+  <%= tag.p profile.user.username, class: 'Card__title' %>
+  <div class="InfoBox">
+    <div class="InfoBox__group">
+      <p class="InfoBox__label">Name
+      <%= tag.p profile.full_name, class: 'InfoBox__content' %>
+    </div>
+    <div class="InfoBox__group">
+      <p class="InfoBox__label">Email
+      <%= tag.p profile.user.email, class: 'InfoBox__content' %>
+    </div>
+  </div>
+</div>

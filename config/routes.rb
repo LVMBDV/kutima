@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     get 'logout', to: 'auth0#logout', as: :auth_logout
   end
 
+  resources :profiles, except: :destroy
+
+  get 'me', to: 'profiles#me', as: :user_profile
+
   root to: 'home#index'
 end

@@ -14,7 +14,7 @@ module Securable
   end
 
   def authenticate_user
-    redirect_to root_path unless signed_in?
+    redirect_to root_path and return unless signed_in?
   end
 
   def signed_in?
@@ -46,7 +46,14 @@ module Securable
   def user_with_roles
     return nil unless signed_in?
 
-    user_from_provider.merge(roles: roles_from_provider)
+    user_data = user_from_provider
+    auth_data = {
+      auth_provider_id: session[:userinfo]['sub'],
+      username: user_data['username'],
+      email: user_data['email'],
+      roles: roles_from_provider
+    }
+    User.from_auth_provider(**auth_data)
   end
 
   def user_from_provider

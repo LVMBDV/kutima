@@ -9,6 +9,10 @@ en:
             path: dashboard_path
             method: 'get'
             icon_class: 'fas fa-chart-line'
+          - name: 'Profile'
+            path: user_profile_path
+            method: 'get'
+            icon_class: 'fas fa-user'
           - name: 'Logout'
             path: auth_logout_path
             method: 'get'

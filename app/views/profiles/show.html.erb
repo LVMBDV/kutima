@@ -1,0 +1,10 @@
+<div class="Card">
+  <%= tag.div class: 'Card__header' do %>
+    <p class="Card__header-text u-Element--full u-Text--right">
+      <%= link_to edit_profile_path(current_user.profile), class: 'Link--dark' do %>
+        <i class="fas fa-pencil-alt"></i>&nbsp;Edit
+      <% end %>
+    </p>
+  <% end if @profile.id == @user.profile.id %>
+  <%= render partial: 'profiles/profile', locals: { profile: @profile } %>
+</div>
