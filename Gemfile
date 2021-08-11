@@ -31,6 +31,8 @@ end
 
 group :development do
   gem 'brakeman'
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'listen'
   gem 'overcommit'
   gem 'pry-rails'
