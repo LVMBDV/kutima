@@ -1,0 +1,28 @@
+<%= form_with model: identity_statement, id: dom_id(identity_statement), class: 'Form' do |f| %>
+  <%= tag.div class: 'Form__group--boxed' do %>
+    <%= f.label :life_area, 'Life Area', for: :life_area %>
+    <%= f.select :life_area, options_for_select(LifeArea::AREAS.transform_keys {|key| key.capitalize }, identity_statement.life_area), include_blank: 'Select life area...' %>
+    <% identity_statement.errors.select{|error| error.attribute == :life_area }.each do |error| %>
+      <%= tag.small error.full_message, class: 'field_with_errors' %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'Form__group--boxed' do %>
+    <%= f.label :identity, 'I am a...', for: :identity %>
+    <%= f.text_field :identity %>
+    <% identity_statement.errors.select{|error| error.attribute == :identity }.each do |error| %>
+      <%= tag.small error.full_message, class: 'field_with_errors' %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'Form__group--boxed' do %>
+    <%= f.label :objective, 'who...', for: :objective %>
+    <%= f.text_field :objective %>
+    <% identity_statement.errors.select{|error| error.attribute == :objective }.each do |error| %>
+      <%= tag.small error.full_message, class: 'field_with_errors' %>
+    <% end %>
+  <% end %>
+  <%= tag.div class: 'Form__action' do %>
+    <%= button_tag type: :submit, class: 'Button--solid-primary' do %>
+      <%= raw(submit_text) %>
+    <% end %>
+  <% end %>
+<% end %>

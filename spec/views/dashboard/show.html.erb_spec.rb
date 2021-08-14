@@ -12,6 +12,6 @@ describe 'dashboard/show.html.erb', type: :view do
   end
 
   it 'renders the home page with title' do
-    expect(rendered).to match(/#{I18n.t('pages.dashboard.title')}/)
+    expect(rendered).to match(/#{I18n.t('pages.dashboard.title', name: user.profile.first_name)}/)
   end
 end

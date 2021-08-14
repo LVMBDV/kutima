@@ -1,31 +1,21 @@
 en:
   layout:
     title: 'Kutima'
-    navbar:
+    authenticated-navbar:
       brand: 'Kutima'
       links:
-        authenticated:
-          - name: 'Dashboard'
-            path: dashboard_path
-            method: 'get'
-            icon_class: 'fas fa-chart-line'
-          - name: 'Profile'
-            path: user_profile_path
-            method: 'get'
-            icon_class: 'fas fa-user'
-          - name: 'Logout'
-            path: auth_logout_path
-            method: 'get'
-            icon_class: 'fas fa-sign-out-alt'
-        unauthenticated:
-          - name: 'Home'
-            path: root_path
-            method: 'get'
-            icon_class: 'fas fa-home'
-          - name: 'Login'
-            path: 'auth/auth0'
-            method: 'post'
-            icon_class: 'fas fa-sign-in-alt'
+        - name: 'Dashboard'
+          path: dashboard_path
+          icon_class: 'fas fa-chart-line'
+        - name: 'Profile'
+          path: user_profile_path
+          icon_class: 'fas fa-user'
+        - name: 'Logout'
+          path: auth_logout_path
+          icon_class: 'fas fa-sign-out-alt'
+    navbar:
+      brand: 'Kutima'
+      login: 'Login'
     footer:
       links:
         authenticated:
@@ -58,7 +48,7 @@ en:
         title: 'Get Started'
         button: 'Sign Up'
     dashboard:
-      title: 'Dashboard'
+      title: "Welcome, %{name}"
   messages:
     failure:
       needs-auth: 'You need to be logged in.'

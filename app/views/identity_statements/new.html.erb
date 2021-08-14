@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :new_identity_statement do %>
+  <div class="Card">
+    <div class="Card__header">
+      <%= link_to new_reset_identity_statements_path, class: 'Link--dark', data: { 'turbo-frame': :new_identity_statement } do %>
+        <i class="fas fa-arrow-left fa-2x" title="Back"></i>
+      <% end %>
+    </div>
+    <div class="Card__body">
+      <%= render partial: 'identity_statements/form',
+        locals: {
+          identity_statement: @identity_statement,
+          submit_text: '<i class="fas fa-bullhorn"></i>&nbsp;Make a Statement'
+        } %>
+    </div>
+  </div>
+<% end %>

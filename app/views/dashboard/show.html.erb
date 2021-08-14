@@ -1,6 +1,6 @@
-<div class="Card">
-  <div class="Card__body">
-    <%= tag.p 'Dashboard', class: 'Card__title' %>
-    <%= tag.p "Welcome, #{@user.profile.first_name}." %>
-  </div>
-</div>
+<%= tag.h1 I18n.t('pages.dashboard.title', name: @user.profile.first_name), class: 'u-Text--center' %>
+<%= turbo_frame_tag :new_identity_statement do %>
+  <%= render template: 'identity_statements/new_reset' %>
+<% end %>
+<%= turbo_stream_from 'identity_statements' %>
+<%= turbo_frame_tag :identity_statements, src: identity_statements_path %>

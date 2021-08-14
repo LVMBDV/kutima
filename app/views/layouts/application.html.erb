@@ -7,13 +7,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield :head %>
+    <%= turbo_include_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_include_tag 'https://kit.fontawesome.com/b2a17afd54.js', crossorigin: 'anonymous' %>
   </head>
 
   <body>
-    <%= render 'layouts/partials/navbar' %>
+    <%= render "layouts/partials/#{ 'authenticated_' if signed_in? }navbar" %>
     <%= yield %>
     <%= render 'layouts/partials/footer' %>
   </body>

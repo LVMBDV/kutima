@@ -1,0 +1,7 @@
+<%= turbo_stream.replace :new_identity_statement do %>
+  <%= render template: 'identity_statements/new_reset' %>
+<% end %>
+
+<%= turbo_stream.prepend :identity_statements do %>
+  <%= render @identity_statement %>
+<% end %>

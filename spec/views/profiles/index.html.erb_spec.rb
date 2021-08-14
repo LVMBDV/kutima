@@ -7,7 +7,7 @@ describe 'profiles/index', type: :view do
   let(:profiles) { create_list(:profile, 3, user: user) }
 
   before do
-    @profiles = ProfileDecorator.decorate_collection(profiles)
+    @profiles = profiles
     render
   end
 

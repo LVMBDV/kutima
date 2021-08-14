@@ -86,6 +86,31 @@
   }
 }
 
+.Navbar--unauthenticated {
+  .Navbar__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: spacing-size(2);
+
+    @include breakpoint-l {
+      padding: spacing-size(2) spacing-size(4);
+    }
+  }
+
+  .Navbar__brand {
+    color: $black;
+    font-size: 150%;
+  }
+
+  .Navbar__button {
+    @extend .Button--outline-primary;
+
+    margin: 0;
+  }
+}
+
 .Footer {
   margin-top: spacing-size(6);
   margin-bottom: spacing-size(6);

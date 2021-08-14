@@ -2,7 +2,7 @@
 
 ##
 # Provides a Postgresql ENUM type
-class LifeArea
+module LifeArea
   AREAS = {
     career: 'career',
     financial: 'financial',
@@ -12,8 +12,4 @@ class LifeArea
     family: 'family',
     social: 'social'
   }.freeze
-
-  def initialize(life_area)
-    @life_area = life_area
-  end
 end

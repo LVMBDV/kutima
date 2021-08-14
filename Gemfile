@@ -7,7 +7,6 @@ ruby '3.0.2'
 
 gem 'auth0'
 gem 'bootsnap', require: false
-gem 'draper'
 gem 'hotwire-rails'
 gem 'jbuilder'
 gem 'newrelic_rpm'

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   resources :profiles, except: :destroy
 
+  resources :identity_statements, path: 'identity-statements' do
+    get 'new-reset', to: 'identity_statements#new_reset', as: :new_reset, on: :collection
+  end
+
   get 'me', to: 'profiles#me', as: :user_profile
 
   root to: 'home#index'

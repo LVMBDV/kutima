@@ -1,17 +1,8 @@
-<%= tag.nav class: 'Navbar', data: { controller: 'navbar' } do %>
+<nav class="Navbar--unauthenticated">
   <div class="Navbar__header">
-    <%= link_to '#', class: 'Navbar__toggle', data: { action: 'click->navbar#toggleMenuState' } do %>
-      <i class="fas fa-bars"></i>
-    <% end %>
     <%= tag.span I18n.t('layout.navbar.brand'), class: 'Navbar__brand' %>
-  </div>
-  <%= tag.div class: 'Navbar__menu', data: { target: 'navbar.menu' } do %>
-    <ul>
-    <% I18n.t("layout.navbar.links.#{'un' unless signed_in?}authenticated").each do |link| %>
-      <%= link_to link_from_config(link[:path]), method: link[:method].to_sym, class: 'Navbar__link Link--dark' do %>
-        <i class="<%= link[:icon_class] %>"></i>&nbsp;<%= link[:name] %>
-      <% end %>
+    <%= button_to 'auth/auth0', method: :post, class: 'Navbar__button', 'data-turbo': false do %>
+      <i class="fas fa-sign-in-alt"></i>&nbsp;<%= I18n.t('layout.navbar.login') %>
     <% end %>
-    </ul>
-  <% end %>
-<% end %>
+  </div>
+</nav>

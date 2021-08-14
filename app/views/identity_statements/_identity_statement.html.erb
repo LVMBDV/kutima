@@ -1,0 +1,18 @@
+<%= turbo_frame_tag dom_id(identity_statement) do %>
+  <div class="Card">
+    <div class="Card__header">
+      <%= tag.span identity_statement.life_area, class: "IdentityStatement__life-area-tag--#{identity_statement.life_area}" %>
+      <div class="IconGroup">
+        <%= link_to edit_identity_statement_path(identity_statement), class: 'Link--caution', data: { 'turbo-frame': dom_id(identity_statement) } do %>
+          <i class="fas fa-pencil-alt fa-2x" title="Edit"></i>
+        <% end %>
+        <%= link_to identity_statement_path(identity_statement), method: 'delete', class: 'IconLink--danger', data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash-alt fa-2x" title="Delete"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="Card__body">
+      <%= tag.p "I am a(n) #{identity_statement.identity} who #{identity_statement.objective}", class: 'IdentityStatement__statement' %>
+    </div>
+  </div>
+<% end %>

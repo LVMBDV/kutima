@@ -9,8 +9,19 @@ code {
     monospace;
 }
 
-.Card__title {
-  text-transform: none;
+.Card {
+  margin-bottom: spacing-size(4);
+  box-shadow: inset -3px -3px 10px 1px lighten($black,75%);
+
+  &__body {
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: spacing-size(4);
+  }
+
+  &__title {
+    text-transform: none;
+  }
 }
 
 .Hero__headline--muted {
@@ -21,4 +32,20 @@ code {
 
 .InfoBox__label {
   text-transform: none;
+}
+
+.Form__group--boxed {
+  label {
+    font-weight: 600;
+  }
+}
+
+.field_with_errors {
+  label, input, select {
+    color: semantic-color('danger');
+  }
+}
+
+small.field_with_errors {
+  color: semantic-color('danger');
 }

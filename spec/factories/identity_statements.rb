@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :identity_statement do
-    user { nil }
-    life_area { '' }
+    life_area { LifeArea::AREAS.values.sample }
     identity { 'MyString' }
     objective { 'MyString' }
+    association :user
   end
 end

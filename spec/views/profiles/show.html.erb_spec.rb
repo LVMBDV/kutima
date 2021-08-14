@@ -9,7 +9,7 @@ describe 'profiles/show', type: :view do
 
   before do
     @user = current_user
-    @profile = profile.decorate
+    @profile = profile
     Utils::Auth.login(current_user, roles: [])
     render
   end

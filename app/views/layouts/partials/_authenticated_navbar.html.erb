@@ -1,0 +1,19 @@
+<%= tag.nav class: 'Navbar', data: { controller: 'navbar' } do %>
+  <div class="Navbar__header">
+    <%= link_to '#', class: 'Navbar__toggle', data: { action: 'click->navbar#toggleMenuState' } do %>
+      <i class="fas fa-bars"></i>
+    <% end %>
+    <%= tag.span I18n.t('layout.authenticated-navbar.brand'), class: 'Navbar__brand' %>
+  </div>
+  <%= tag.div class: 'Navbar__menu', data: { target: 'navbar.menu' } do %>
+    <ul>
+      <% I18n.t("layout.authenticated-navbar.links").each do |link| %>
+        <li>
+          <%= link_to link_from_config(link[:path]), class: 'Navbar__link Link--dark', data: { 'turbo-frame': '_top' } do %>
+            <i class="<%= link[:icon_class] %>"></i>&nbsp;<%= link[:name] %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

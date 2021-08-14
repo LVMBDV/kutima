@@ -1,0 +1,16 @@
+<%= turbo_frame_tag dom_id(@identity_statement) do %>
+  <div class="Card">
+    <div class="Card__header">
+      <%= link_to identity_statement_path(@identity_statement), class: 'Link--dark', data: { 'turbo-frame': dom_id(@identity_statement) } do %>
+        <i class="fas fa-arrow-left fa-2x" title="Back"></i>
+      <% end %>
+    </div>
+    <div class="Card__body">
+      <%= render partial: 'identity_statements/form',
+        locals: {
+          identity_statement: @identity_statement,
+          submit_text: 'Save'
+        } %>
+    </div>
+  </div>
+<% end %>

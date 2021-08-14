@@ -7,19 +7,19 @@ class ProfilesController < ApplicationController
 
   # GET /profiles or /profiles.json
   def index
-    @profiles = Profile.all.decorate
+    @profiles = Profile.all
   end
 
   # GET /profiles/1 or /profiles/1.json
   def show
     @user = current_user
-    @profile = Profile.find(params[:id]).decorate
+    @profile = Profile.find(params[:id])
   end
 
   # GET /me or me.json
   def me
     @user = current_user
-    @profile = current_user.profile.decorate
+    @profile = current_user.profile
     render :show
   end
 

@@ -7,10 +7,7 @@ class IdentityStatement < ApplicationRecord
 
   enum life_area: LifeArea::AREAS, _suffix: true
 
+  validates :life_area, presence: true, inclusion: { in: LifeArea::AREAS.values }
   validates :identity, presence: true, length: { minimum: 3, maximum: 45 }
   validates :objective, presence: true, length: { minimum: 3, maximum: 255 }
-
-  def life_area
-    @life_area ||= LifeArea.new(self[:life_area])
-  end
 end

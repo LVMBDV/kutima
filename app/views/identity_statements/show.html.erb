@@ -1,0 +1,7 @@
+<%= turbo_frame_tag :new_identity_statement do %>
+  <%= render partial: 'identity_statements/identity_statement',
+    id: dom_id(@identity_statement),
+    locals: {
+      identity_statement: @identity_statement,
+    } %>
+<% end %>
