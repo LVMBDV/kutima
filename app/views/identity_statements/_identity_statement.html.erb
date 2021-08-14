@@ -12,7 +12,11 @@
       </div>
     </div>
     <div class="Card__body">
-      <%= tag.p "I am a(n) #{identity_statement.identity} who #{identity_statement.objective}", class: 'IdentityStatement__statement' %>
+      <p class="IdentityStatement__statement">I am a(n)&nbsp;
+        <%= tag.span identity_statement.identity, class: 'IdentityStatement__identity' %>&nbsp;
+        who&nbsp;
+        <%= tag.span identity_statement.objective, class: 'IdentityStatement__objective' %>.
+      </p>
     </div>
   </div>
 <% end %>

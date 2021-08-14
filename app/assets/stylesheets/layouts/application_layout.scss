@@ -7,6 +7,7 @@
 
   &__brand {
     color: $black;
+    font-weight: 600;
     font-size: 150%;
   }
 
@@ -94,18 +95,19 @@
     width: 100%;
     padding: spacing-size(2);
 
-    @include breakpoint-l {
-      padding: spacing-size(2) spacing-size(4);
+    @include breakpoint-m {
+      padding: spacing-size(2) spacing-size(5);
     }
   }
 
   .Navbar__brand {
     color: $black;
+    font-weight: 600;
     font-size: 150%;
   }
 
   .Navbar__button {
-    @extend .Button--outline-primary;
+    @extend .Button--solid-primary;
 
     margin: 0;
   }

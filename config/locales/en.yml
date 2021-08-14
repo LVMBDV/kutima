@@ -15,7 +15,7 @@ en:
           icon_class: 'fas fa-sign-out-alt'
     navbar:
       brand: 'Kutima'
-      login: 'Login'
+      login: 'Sign up / Login'
     footer:
       links:
         authenticated:
@@ -46,7 +46,7 @@ en:
           body: 'Gain insights from measuring your performance, and then use those insights to adjust your plan.'
       cta:
         title: 'Get Started'
-        button: 'Sign Up'
+        button: 'Sign up / Login'
     dashboard:
       title: "Welcome, %{name}"
   messages:

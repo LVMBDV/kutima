@@ -8,14 +8,14 @@
   <% end %>
   <%= tag.div class: 'Form__group--boxed' do %>
     <%= f.label :identity, 'I am a...', for: :identity %>
-    <%= f.text_field :identity %>
+    <%= f.text_field :identity, { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false } %>
     <% identity_statement.errors.select{|error| error.attribute == :identity }.each do |error| %>
       <%= tag.small error.full_message, class: 'field_with_errors' %>
     <% end %>
   <% end %>
   <%= tag.div class: 'Form__group--boxed' do %>
     <%= f.label :objective, 'who...', for: :objective %>
-    <%= f.text_field :objective %>
+    <%= f.text_field :objective, { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false } %>
     <% identity_statement.errors.select{|error| error.attribute == :objective }.each do |error| %>
       <%= tag.small error.full_message, class: 'field_with_errors' %>
     <% end %>

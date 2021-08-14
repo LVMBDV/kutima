@@ -39,5 +39,20 @@
   &__statement {
     font-size: font-scale(.5);
     text-align: center;
+    line-height: spacing-size(4);
+  }
+
+  &__identity, &__objective {
+    border-style: solid;
+    border-width: 0 0 5px 0;
+    border-radius: $base-border-radius;
+  }
+
+  &__identity {
+    border-color: theme-color('accent');
+  }
+
+  &__objective {
+    border-color: theme-color('primary');
   }
 }

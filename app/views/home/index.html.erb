@@ -14,5 +14,7 @@
 </div>
 <div class="Hero">
   <%= tag.h1 I18n.t('pages.home.cta.title'), class: 'Hero__headline Hero__headline--muted' %>
-  <%= button_to I18n.t('pages.home.cta.button'), 'auth/auth0', method: :post, class: 'Button--solid-primary' %>
+    <%= button_to 'auth/auth0', method: :post, class: 'Button--solid-primary', 'data-turbo': false do %>
+      <i class="fas fa-sign-in-alt"></i>&nbsp;<%= I18n.t('pages.home.cta.button') %>
+    <% end %>
 </div>
