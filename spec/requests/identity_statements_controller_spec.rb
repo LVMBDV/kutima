@@ -91,14 +91,14 @@ describe 'IdentityStatements', type: :request do
 
     context 'when the request has valid parameters' do
       subject(:visit_endpoint) do
-        patch identity_statement_path(identity_statement), params: { identity_statement: valid_attributes }
+        patch identity_statement_path(identity_statement), params: { identity_statement: { identity: 'TEST' } }
       end
 
       it 'updates identity statement' do
         expect do
           visit_endpoint
           identity_statement.reload
-        end.to change(identity_statement, :life_area)
+        end.to change(identity_statement, :identity)
       end
     end
   end
