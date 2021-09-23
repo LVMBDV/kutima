@@ -1,0 +1,22 @@
+<%= turbo_frame_tag @turbo_frame_id do %>
+  <%= render(CardComponent.new) do |c| %>
+    <% c.header do %>
+      <%= tag.span @life_area, class: "IdentityStatement__life-area-tag--#{@life_area}" %>
+      <div class="IconGroup">
+        <%= link_to edit_identity_statement_path(@id), class: 'Link--caution', data: { 'turbo-frame': @turbo_frame_id } do %>
+          <i class="fas fa-pencil-alt fa-2x" title="Edit"></i>
+        <% end %>
+        <%= link_to identity_statement_path(@id), method: 'delete', class: 'IconLink--danger', data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash-alt fa-2x" title="Delete"></i>
+        <% end %>
+      </div>
+    <% end %>
+    <%= c.body do |c| %>
+      <%= tag.p t('.statement-template',
+                  identity: (tag.span @identity, class: 'IdentityStatement__identity'),
+                  objective: (tag.span @objective, class: 'IdentityStatement__objective')
+                 ).html_safe,
+                class: 'IdentityStatement__statement' %>
+    <% end %>
+  <% end %>
+<% end %>

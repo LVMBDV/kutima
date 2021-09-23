@@ -3,6 +3,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 require 'spec_helper'
+require 'view_component/test_helpers'
+require 'capybara/rspec'
 require 'support/factory_bot'
 require 'database_cleaner'
 require 'webmock/rspec'
@@ -27,6 +29,9 @@ RSpec.configure do |config|
 
   config.include Utils::Auth
   config.include Mocks::Users
+
+  config.include ViewComponent::TestHelpers, type: :component
+  config.include Capybara::RSpecMatchers, type: :component
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
