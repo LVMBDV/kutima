@@ -1,6 +1,6 @@
-<div class="Card">
-  <div class="Card__body">
-    <%= tag.p 'Almost there', class: 'Card__title' %>
+<%= render(CardComponent.new) do |c| %>
+  <% c.body do %>
+    <h2 class="dark:text-white text-center text-4xl">Almost There</h2>
     <%= render partial: 'profiles/form', locals: { profile: @profile, submit_text: 'Finish' } %>
-  </div>
-</div>
+  <% end %>
+<% end %>

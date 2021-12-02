@@ -6,8 +6,7 @@
 class HealthCheckController < ApplicationController
   include Loggable
 
-  skip_before_action :authenticate_user
-  skip_before_action :onboard_user
+  skip_before_action :authenticate_user!
 
   def check
     log_event :info, 'monitoring.health-check.success'

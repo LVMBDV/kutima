@@ -2,12 +2,13 @@
 
 require 'rails_helper'
 
-describe 'dashboard/show.html.erb', type: :view do
-  let(:user) { mock_user }
+describe 'dashboard/show', type: :view do
+  let(:user) { mock_onboarded_user }
+  let(:identity_statements) { create_list(:identity_statement, 3, user: user) }
 
   before do
     @user = user
-    create(:profile, user: user)
+    @identity_statements = identity_statements
     render
   end
 

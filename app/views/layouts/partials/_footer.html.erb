@@ -1,10 +1,10 @@
-<footer class="Footer">
-  <div class="Footer__link-list">
+<footer class="text-gray-90 dark:text-white m-8">
+  <div class="flex flex-col lg:flex-row justify-center text-center mb-8">
     <% I18n.t("layout.footer.links.#{'un' unless signed_in?}authenticated").each do |link| %>
-      <%= link_to link[:name], link_from_config(link[:path]), method: link[:method].to_sym, class: 'Footer__link Link--dark' %>
+      <%= link_to link[:name], link_from_config(link[:path]), class: 'text-lg hover:text-gray-500 m-2 p-2 ' %>
     <% end %>
   </div>
-  <div class="Footer__brand-ribbon">
-    <%= tag.p I18n.t('layout.footer.copyright-statement', year: Date.current.year).html_safe, class: 'Footer__copyright' %>
+  <div class="flex flex-row flex-wrap justify-center text-center">
+    <%= tag.p I18n.t('layout.footer.copyright-statement', year: Date.current.year).html_safe, class: 'text-center m-8' %>
   </div>
 </footer>

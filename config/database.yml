@@ -10,14 +10,14 @@ default: &default
 
 development:
   <<: *default
-  database: habit_tracker_rails_development
+  database: kutima_development
 
 test:
   <<: *default
-  database: habit_tracker_rails_test
+  database: kutima_test
 
 production:
   <<: *default
-  database: habit_tracker_rails_production
-  username: habit_tracker_rails
-  password: <%= ENV['HABIT_TRACKER_RAILS_DATABASE_PASSWORD'] %>
+  database: kutima_production
+  username: kutima
+  password: <%= ENV['KUTIMA_DATABASE_PASSWORD'] %>

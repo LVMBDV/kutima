@@ -7,4 +7,8 @@ class Profile < ApplicationRecord
 
   validates :first_name, presence: true, length: { maximum: 40 }
   validates :last_name, presence: true, length: { maximum: 40 }
+
+  def name?
+    first_name && last_name
+  end
 end

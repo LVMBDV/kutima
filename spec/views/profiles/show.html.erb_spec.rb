@@ -3,14 +3,13 @@
 require 'rails_helper'
 
 describe 'profiles/show', type: :view do
-  let(:current_user) { mock_onboarded_user }
+  let(:user) { mock_onboarded_user }
   let(:other_user) { mock_user }
   let(:profile) { create(:profile, user: other_user) }
 
   before do
-    @user = current_user
+    sign_in user
     @profile = profile
-    Utils::Auth.login(current_user, roles: [])
     render
   end
 

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CreateIdentityStatements < ActiveRecord::Migration[6.1]
-  # rubocop:disable Metrics/MethodLength
   def up
     execute <<-SQL.squish
       CREATE TYPE life_area AS ENUM ('career', 'financial', 'spiritual', 'physical', 'intellectual', 'family', 'social');
@@ -18,7 +17,6 @@ class CreateIdentityStatements < ActiveRecord::Migration[6.1]
     add_column :identity_statements, :life_area, :life_area
     add_index :identity_statements, :life_area
   end
-  # rubocop:enable Metrics/MethodLength
 
   def down
     drop_table :identity_statements

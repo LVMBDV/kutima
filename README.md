@@ -1,4 +1,4 @@
-# habit-tracker-rails
+# kutima
 
 ## Table of Contents
 

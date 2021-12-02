@@ -1,5 +1,5 @@
 {
-  "name": "Habit Tracker Rails App",
+  "name": "Kutima",
   "description": "Rails app for tracking habits.",
   "repository": "https://github.com/d3d1rty/habit-tracker-rails",
   "image": "heroku/ruby",

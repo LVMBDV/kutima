@@ -1,5 +1,4 @@
-<% @profiles.each do |profile| %>
-  <div class="Card">
-    <%= render partial: 'profiles/profile', locals: { profile: profile } %>
-  </div>
+<%= turbo_stream_from 'profiles' %>
+<%= turbo_frame_tag :profiles do %>
+  <%= render @profiles %>
 <% end %>

@@ -1,0 +1,22 @@
+<%= turbo_frame_tag dom_id(identity_statement) do %>
+  <%= render(CardComponent.new) do |c| %>
+    <% c.header do %>
+      <div class="ml-1">
+        <%= link_to identity_statement_path(identity_statement.id), method: 'delete', class: 'no-underline focus:outline-none transition-colors text-red-500 hover:text-red-600 mr-1', data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash-alt fa-lg" title="Delete"></i>
+        <% end %>
+        <%= link_to edit_identity_statement_path(identity_statement.id), class: 'no-underline focus:outline-none transition-colors text-yellow-400 hover:text-yellow-500 ml-1', data: { 'turbo-frame': @turbo_frame_id } do %>
+          <i class="fas fa-pencil-alt fa-lg" title="Edit"></i>
+        <% end %>
+      </div>
+      <%= render(LifeAreaTagComponent.new(area: identity_statement.life_area)) %>
+    <% end %>
+    <%= c.body do |c| %>
+      <%= tag.p t('pages.identity-statements.statement-template',
+                  identity: (tag.span identity_statement.identity, class: 'border-solid border-b-4 border-purple-500 rounded-md'),
+                  objective: (tag.span identity_statement.objective, class: 'border-solid border-b-4 border-blue-500 rounded-md')
+                 ).html_safe,
+                class: 'text-2xl text-center text-gray-900 dark:text-white' %>
+    <% end %>
+  <% end %>
+<% end %>

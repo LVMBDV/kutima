@@ -5,11 +5,19 @@ require:
 
 AllCops:
   NewCops: enable
+Metrics/AbcSize:
+  Exclude:
+    - 'db/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/*'
+    - 'db/**/*'
+    - 'spec/**/*'
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*'
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 Style/Documentation:
   Exclude:
     - 'db/**/*'
-Metrics/BlockLength:
-  Exclude:
-    - 'spec/**/*'

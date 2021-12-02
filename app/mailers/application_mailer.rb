@@ -3,6 +3,6 @@
 ##
 # Base mailer class.
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@kutima.com'
+  default from: "no-reply@#{ENV['APP_DOMAIN']}"
   layout 'mailer'
 end

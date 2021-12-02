@@ -1,0 +1,31 @@
+<%= render(CardComponent.new) do |c| %>
+  <% c.body do %>
+    <h2 class="dark:text-white text-center text-4xl">Sign up</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: false }) do |f| %>
+      <%= render(FormGroupComponent.new(form: f, field: :email, errors: resource.errors)) do |c| %>
+        <%= c.label 'Email' %>
+        <%= c.text html_options: { type: 'email', autofocus: true, autocomplete: 'email' } %>
+      <% end %>
+
+      <%= render(FormGroupComponent.new(form: f, field: :password, errors: resource.errors)) do |c| %>
+        <%= c.label 'Password' %>
+        <%= c.text html_options: { type: 'password', autofocus: true, autocomplete: 'new-password' } %>
+        <small>(<%= @minimum_password_length %> characters minimum)</small>
+      <% end %>
+
+      <%= render(FormGroupComponent.new(form: f, field: :password, errors: resource.errors)) do |c| %>
+        <%= c.label 'Confirm Password' %>
+        <%= c.text html_options: { type: 'password', autofocus: true, autocomplete: 'new-password' } %>
+      <% end %>
+
+      <%= tag.div class: 'text-center mt-6' do %>
+        <%= render(ButtonTagComponent.new(options: { data: { turbo: false } })) do %>
+            Sign up
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= render 'devise/shared/links' %>
+  <% end %>
+<% end %>

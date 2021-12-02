@@ -1,37 +1,39 @@
 en:
   layout:
     title: 'Kutima'
-    authenticated-navbar:
-      brand: 'Kutima'
-      links:
-        - name: 'Dashboard'
-          path: dashboard_path
-          icon_class: 'fas fa-chart-line'
-        - name: 'Profile'
-          path: user_profile_path
-          icon_class: 'fas fa-user'
-        - name: 'Logout'
-          path: auth_logout_path
-          icon_class: 'fas fa-sign-out-alt'
     navbar:
       brand: 'Kutima'
-      login: 'Sign up / Login'
+      authenticated:
+        links:
+          - name: 'Dashboard'
+            path: dashboard_path
+            icon_class: 'fas fa-chart-line'
+          - name: 'Profile'
+            path: user_profile_path
+            icon_class: 'fas fa-user'
+          - name: 'Sign out'
+            path: destroy_user_session_path
+            icon_class: 'fas fa-sign-out-alt'
+      unauthenticated:
+        links:
+          - name: 'Sign up'
+            path: new_user_registration_path
+            icon_class: 'fas fa-user-plus'
+          - name: 'Sign in'
+            path: new_user_session_path
+            icon_class: 'fas fa-sign-in-alt'
     footer:
       links:
         authenticated:
           - name: 'Dashboard'
             path: dashboard_path
-            method: 'get'
-          - name: 'Logout'
-            path: auth_logout_path
-            method: 'get'
+          - name: 'Sign out'
+            path: destroy_user_session_path
         unauthenticated:
           - name: 'Home'
             path: root_path
-            method: 'get'
-          - name: 'Login'
-            path: 'auth/auth0'
-            method: 'post'
+          - name: 'Sign in'
+            path: new_user_session_path
       copyright-statement: 'Made with ❤️ by Dick Davis &copy; Copyright %{year}'
   pages:
     home:
@@ -40,15 +42,20 @@ en:
       features:
         - title: 'Identity'
           body: 'Affirm who you are. Make bold statements about the type of person you are, and then become that person.'
+          image: 'undraw-identity.svg'
         - title: 'Growth'
           body: 'Gradual changes compound over time. Challenge yourself to be a little further on the path each day.'
+          image: 'undraw-growth.svg'
         - title: 'Insights'
           body: 'Gain insights from measuring your performance, and then use those insights to adjust your plan.'
+          image: 'undraw-insights.svg'
       cta:
         title: 'Get Started'
-        button: 'Sign up / Login'
+        button: 'Sign up'
     dashboard:
       title: "Welcome, %{name}"
+    identity-statements:
+      statement-template: "I am a(n) %{identity} who %{objective}."
   messages:
     failure:
       needs-auth: 'You need to be logged in.'

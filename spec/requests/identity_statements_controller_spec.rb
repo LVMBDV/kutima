@@ -8,7 +8,7 @@ describe 'IdentityStatements', type: :request do
   let(:invalid_attributes) { attributes_for(:identity_statement, identity: nil, user: user) }
 
   before do
-    Utils::Auth.login(user, roles: [])
+    sign_in user
   end
 
   describe 'GET /identity-statements/new' do

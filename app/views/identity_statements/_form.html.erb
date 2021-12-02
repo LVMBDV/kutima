@@ -1,28 +1,22 @@
-<%= form_with model: identity_statement, id: dom_id(identity_statement), class: 'Form' do |f| %>
-  <%= tag.div class: 'Form__group--boxed' do %>
-    <%= f.label :life_area, 'Life Area', for: :life_area %>
-    <%= f.select :life_area, options_for_select(LifeArea::AREAS.transform_keys {|key| key.capitalize }, identity_statement.life_area), include_blank: 'Select life area...' %>
-    <% identity_statement.errors.select{|error| error.attribute == :life_area }.each do |error| %>
-      <%= tag.small error.full_message, class: 'field_with_errors' %>
-    <% end %>
+<%= form_with model: identity_statement, id: dom_id(identity_statement), class: 'w-100 m-auto' do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :life_area, errors: identity_statement.errors)) do |c| %>
+    <% c.label('Life Area') %>
+    <% c.select(
+         options_for_select(LifeArea::AREAS.transform_keys {|key| key.capitalize }, identity_statement.life_area),
+         options: { include_blank: 'Select life area...' }
+       ) %>
   <% end %>
-  <%= tag.div class: 'Form__group--boxed' do %>
-    <%= f.label :identity, 'I am a...', for: :identity %>
-    <%= f.text_field :identity, { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false } %>
-    <% identity_statement.errors.select{|error| error.attribute == :identity }.each do |error| %>
-      <%= tag.small error.full_message, class: 'field_with_errors' %>
-    <% end %>
+  <%= render(FormGroupComponent.new(form: f, field: :identity, errors: identity_statement.errors)) do |c| %>
+    <% c.label('I am a(n)...') %>
+    <% c.text(html_options: { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false }) %>
   <% end %>
-  <%= tag.div class: 'Form__group--boxed' do %>
-    <%= f.label :objective, 'who...', for: :objective %>
-    <%= f.text_field :objective, { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false } %>
-    <% identity_statement.errors.select{|error| error.attribute == :objective }.each do |error| %>
-      <%= tag.small error.full_message, class: 'field_with_errors' %>
-    <% end %>
+  <%= render(FormGroupComponent.new(form: f, field: :objective, errors: identity_statement.errors)) do |c| %>
+    <% c.label('who...') %>
+    <% c.text(html_options: { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false }) %>
   <% end %>
-  <%= tag.div class: 'Form__action' do %>
-    <%= button_tag type: :submit, class: 'Button--solid-primary' do %>
-      <%= raw(submit_text) %>
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new) do %>
+        <%= raw(submit_text) %>
     <% end %>
   <% end %>
 <% end %>

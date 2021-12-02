@@ -1,13 +1,16 @@
-<div class="Card__body">
-  <%= tag.p profile.user.username, class: 'Card__title' %>
-  <div class="InfoBox">
-    <div class="InfoBox__group">
-      <p class="InfoBox__label">Name
-      <%= tag.p "#{profile.first_name} #{profile.last_name}", class: 'InfoBox__content' %>
-    </div>
-    <div class="InfoBox__group">
-      <p class="InfoBox__label">Email
-      <%= tag.p profile.user.email, class: 'InfoBox__content' %>
-    </div>
-  </div>
-</div>
+<%= turbo_frame_tag dom_id(profile) do %>
+  <%= render(CardComponent.new) do |c| %>
+    <% c.header do %>
+      <div class="ml-1">
+        <%= link_to edit_profile_path(current_user.profile), class: 'no-underline focus:outline-none transition-colors text-yellow-400 hover:text-yellow-500' do %>
+          <i class="fas fa-pencil-alt fa-lg" title="Edit"></i>
+        <% end %>
+      </div>
+    <% end if profile.id == current_user.profile.id %>
+    <% c.body do %>
+      <%= tag.h2 profile.user.username, class: 'text-center font-semibold text-3xl dark:text-white' %>
+      <%= tag.p "#{profile.first_name} #{profile.last_name}", class: 'text-center dark:text-white' %>
+      <%= tag.p "Member since #{profile.user.created_at.strftime("%m/%d/%Y")}", class: 'text-center dark:text-white' %>
+    <% end %>
+  <% end %>
+<% end %>

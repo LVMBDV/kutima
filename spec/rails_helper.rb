@@ -21,17 +21,16 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 
-OmniAuth.config.test_mode = true
-
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
-  config.include Utils::Auth
   config.include Mocks::Users
 
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :view
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

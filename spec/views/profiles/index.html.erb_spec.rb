@@ -3,11 +3,13 @@
 require 'rails_helper'
 
 describe 'profiles/index', type: :view do
-  let(:user) { mock_user }
-  let(:profiles) { create_list(:profile, 3, user: user) }
+  let(:user) { mock_onboarded_user }
+  let(:profile) { create(:profile, user: user) }
+  let(:profiles) { create_list(:profile, 3) }
 
   before do
-    @profiles = profiles
+    @profiles = profiles.push profile
+    sign_in user
     render
   end
 

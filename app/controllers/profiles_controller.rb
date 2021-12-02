@@ -3,7 +3,11 @@
 ##
 # Controller for profile endpoints.
 class ProfilesController < ApplicationController
+  include Onboardable
+
   skip_before_action :onboard_user, only: %i[new create]
+  before_action :set_user
+  before_action :set_profile_for_current_user, only: %i[me edit update]
 
   # GET /profiles or /profiles.json
   def index
@@ -12,14 +16,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
-    @user = current_user
     @profile = Profile.find(params[:id])
   end
 
   # GET /me or me.json
   def me
-    @user = current_user
-    @profile = current_user.profile
     render :show
   end
 
@@ -31,9 +32,7 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1/edit
-  def edit
-    @profile = current_user.profile
-  end
+  def edit; end
 
   # POST /profiles or /profiles.json
   # rubocop:disable Metrics/AbcSize
@@ -41,15 +40,15 @@ class ProfilesController < ApplicationController
   def create
     redirect_to user_profile_path and return if current_user.profile.present?
 
-    profile = Profile.new(profile_params.merge(user: current_user))
+    @profile = Profile.new(profile_params.merge(user: current_user))
 
     respond_to do |format|
-      if profile.save
+      if @profile.save
         format.html { redirect_to dashboard_path, notice: 'Welcome to Kutima! You\'re ready to start optimizing.' }
-        format.json { render :show, status: :created, location: profile }
+        format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: profile.errors, status: :unprocessable_entity }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,12 +56,14 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
     respond_to do |format|
-      if current_user.profile.update(profile_params)
+      if @profile.update(profile_params)
         format.html { redirect_to user_profile_path, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: current_user.profile }
+        format.turbo_stream { render :update_success }
+        format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: current_user.profile.errors, status: :unprocessable_entity }
+        format.turbo_stream { render :update_failure }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,6 +71,14 @@ class ProfilesController < ApplicationController
   # rubocop:enable Metrics/MethodLength
 
   private
+
+  def set_user
+    @user = current_user
+  end
+
+  def set_profile_for_current_user
+    @profile = current_user.profile
+  end
 
   def profile_params
     params.require(:profile).permit(%i[id first_name last_name])

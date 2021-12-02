@@ -8,7 +8,7 @@ describe ProfilesController, type: :request do
   let(:invalid_attributes) { attributes_for(:profile, first_name: nil, user: user) }
 
   before do
-    Utils::Auth.login(user, roles: [])
+    sign_in user
   end
 
   describe 'GET /profiles' do
@@ -72,11 +72,6 @@ describe ProfilesController, type: :request do
       it 'does not create a new Profile' do
         expect { visit_endpoint }.to change(Profile, :count).by(0)
       end
-
-      it 'redirects to user\'s profile' do
-        visit_endpoint
-        expect(response).to redirect_to(user_profile_path)
-      end
     end
 
     context 'when the request has valid parameters and the user has no profile data' do
@@ -103,11 +98,6 @@ describe ProfilesController, type: :request do
 
       it 'does not create a new Profile' do
         expect { visit_endpoint }.to change(Profile, :count).by(0)
-      end
-
-      it 'redirects to user\'s profile' do
-        visit_endpoint
-        expect(response).to redirect_to user_profile_path
       end
     end
 

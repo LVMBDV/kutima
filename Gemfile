@@ -5,19 +5,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
-gem 'auth0'
 gem 'bootsnap', require: false
+gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'
 gem 'hotwire-rails'
 gem 'jbuilder'
 gem 'newrelic_rpm'
-gem 'omniauth-auth0'
-gem 'omniauth-rails_csrf_protection'
 gem 'pg'
 gem 'puma'
-gem 'rails'
+gem 'rails', '~> 7.0.0.alpha2'
 gem 'redis'
-gem 'sass-rails'
 gem 'sidekiq'
+gem 'tailwindcss-rails'
 gem 'view_component', require: 'view_component/engine'
 gem 'webpacker'
 

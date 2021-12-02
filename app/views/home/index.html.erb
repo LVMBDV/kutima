@@ -1,20 +1,21 @@
-<div class="Hero--inverted">
-  <%= tag.h1 I18n.t('pages.home.title'), class: 'Hero__headline' %>
-  <%= tag.p I18n.t('pages.home.lede'), class: 'Hero__lede' %>
-</div>
-<div class="CardDeck">
+<%= render(HeroComponent.new(options: { classes: 'text-white bg-gray-900' })) do |c| %>
+  <% c.headline(I18n.t('pages.home.title')) %>
+  <% c.lede(I18n.t('pages.home.lede')) %>
+<% end %>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 mx-4">
   <% I18n.t('pages.home.features').each do |feature| %>
-    <div class="Card--small FeatureCard">
-      <div class="Card__body">
-        <%= tag.p feature[:title], class: 'Card__title' %>
-        <%= tag.p feature[:body] %>
-      </div>
-    </div>
+    <%= render(CardComponent.new) do |c| %>
+      <% c.body do %>
+        <%= image_tag feature[:image], class: 'h-52 mx-auto mb-6' %>
+        <%= tag.h2 feature[:title], class: 'font-semibold text-3xl text-center text-gray-900 dark:text-white mb-4' %>
+        <%= tag.p feature[:body], class: 'text-center leading-6 text-gray-900 dark:text-white' %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
-<div class="Hero">
-  <%= tag.h1 I18n.t('pages.home.cta.title'), class: 'Hero__headline Hero__headline--muted' %>
-    <%= button_to 'auth/auth0', method: :post, class: 'Button--solid-primary', 'data-turbo': false do %>
-      <i class="fas fa-sign-in-alt"></i>&nbsp;<%= I18n.t('pages.home.cta.button') %>
-    <% end %>
-</div>
+<%= render(HeroComponent.new) do |c| %>
+  <% c.headline I18n.t('pages.home.cta.title') %>
+  <%= render(ButtonToComponent.new(link: new_user_registration_path, method: :get, options: { data: { turbo: false } })) do %>
+    <i class="fas fa-user-plus"></i>&nbsp;<%= I18n.t('pages.home.cta.button') %>
+  <% end %>
+<% end %>

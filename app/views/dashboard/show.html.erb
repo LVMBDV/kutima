@@ -1,4 +1,4 @@
-<%= tag.h1 I18n.t('pages.dashboard.title', name: @user.profile.first_name), class: 'u-Text--center' %>
+<%= tag.h1 I18n.t('pages.dashboard.title', name: @user.profile.first_name), class: 'text-center text-4xl font-semibold text-gray-900 dark:text-white' %>
 <%= turbo_frame_tag :new_identity_statement do %>
   <%= render template: 'identity_statements/new_reset' %>
 <% end %>

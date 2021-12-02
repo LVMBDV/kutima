@@ -1,13 +1,15 @@
-<%= form_with model: profile, class: 'Form' do |f| %>
-  <%= tag.div class: 'Form__group--boxed' do %>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+<%= form_with model: profile, id: dom_id(profile), class: 'w-100 m-auto' do |f| %>
+  <%= render(FormGroupComponent.new(form: f, field: :first_name, errors: profile.errors)) do |c| %>
+    <% c.label('First Name') %>
+    <% c.text(html_options: {}) %>
   <% end %>
-  <%= tag.div class: 'Form__group--boxed' do %>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+  <%= render(FormGroupComponent.new(form: f, field: :last_name, errors: profile.errors)) do |c| %>
+    <% c.label('Last Name') %>
+    <% c.text(html_options: {}) %>
   <% end %>
-  <%= tag.div class: 'Form__action' do %>
-    <%= f.submit submit_text, class: 'Button--solid-primary' %>
+  <%= tag.div class: 'text-center mt-6' do %>
+    <%= render(ButtonTagComponent.new(options: { data: { turbo: false } })) do %>
+        Save
+    <% end %>
   <% end %>
 <% end %>

@@ -6,6 +6,6 @@ export default class extends Controller {
   toggleMenuState (e) {
     e.preventDefault()
 
-    this.menuTarget.classList.toggle('Navbar__menu--opened')
+    this.menuTarget.classList.toggle('navbar-menu-open')
   }
 }

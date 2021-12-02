@@ -1,0 +1,9 @@
+<%= tag.div class: 'm-2 p-2' do %>
+  <%= label %>
+  <%= select %>
+  <%= text %>
+  <%= date %>
+  <% @errors.select{|error| error.attribute == @field }.each do |error| %>
+    <p><%= tag.small error.full_message, class: 'field_with_errors' %></p>
+  <% end %>
+<% end %>
