@@ -5,16 +5,12 @@
 class FormGroupComponent < ViewComponent::Base
   include Mixins::UtilityMixins
 
-  # rubocop:disable Layout/LineLength
-  INPUT_CLASS_LIST = 'block w-full appearance-none leading-loose transition-colors placeholder-gray-400 hover:border-gray-400 focus:border-blue-500 rounded my-2'
-  # rubocop:enable Layout/LineLength
-
   renders_one :label, lambda { |text, options: {}|
     @form.label(
       @field,
       text,
       for: @field,
-      class: merge_classes(['text-gray-900 dark:text-white font-semibold', options[:classes]])
+      class: merge_classes([UtilityClasses.for(:label), options[:classes]])
     )
   }
 
@@ -23,14 +19,14 @@ class FormGroupComponent < ViewComponent::Base
       @field,
       choices,
       options,
-      html_options.merge(class: merge_classes([INPUT_CLASS_LIST, html_options[:classes]]))
+      html_options.merge(class: merge_classes([UtilityClasses.for(:input), html_options[:classes]]))
     )
   }
 
   renders_one :text, lambda { |html_options: {}|
     @form.text_field(
       @field,
-      html_options.merge(class: merge_classes([INPUT_CLASS_LIST, html_options[:classes]]))
+      html_options.merge(class: merge_classes([UtilityClasses.for(:input), html_options[:classes]]))
     )
   }
 
@@ -44,9 +40,9 @@ class FormGroupComponent < ViewComponent::Base
         start_month: (html_options[:start_month] || DateTime.current.beginning_of_year.month),
         start_day: (html_options[:start_day] || DateTime.current.beginning_of_year.day),
         with_css_classes: {
-          month: merge_classes([INPUT_CLASS_LIST.gsub(/block w-full/, ''), html_options[:classes]]),
-          day: merge_classes([INPUT_CLASS_LIST.gsub(/block w-full/, ''), html_options[:classes]]),
-          year: merge_classes([INPUT_CLASS_LIST.gsub(/block w-full/, ''), html_options[:classes]])
+          month: merge_classes([UtilityClasses.for(:input).gsub(/block w-full/, ''), html_options[:classes]]),
+          day: merge_classes([UtilityClasses.for(:input).gsub(/block w-full/, ''), html_options[:classes]]),
+          year: merge_classes([UtilityClasses.for(:input).gsub(/block w-full/, ''), html_options[:classes]])
         }
       )
     end

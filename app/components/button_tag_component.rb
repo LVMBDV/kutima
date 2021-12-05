@@ -4,7 +4,6 @@
 # Component that wraps buttons generated using button_tag.
 class ButtonTagComponent < ViewComponent::Base
   include Mixins::UtilityMixins
-  include Mixins::ButtonMixins
 
   attr_reader :classes, :data, :type
 
@@ -13,8 +12,7 @@ class ButtonTagComponent < ViewComponent::Base
     @type = type
     @data = options[:data]
     @classes = merge_classes([
-                               CLASS_LIST,
-                               color_classes(color: options[:color] || :blue, outline: options[:outline]),
+                               UtilityClasses.for(:btn, variant: (options[:variant] || :solid_blue)),
                                options[:classes]
                              ])
   end

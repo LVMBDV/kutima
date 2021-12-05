@@ -4,7 +4,6 @@
 # Component that wraps buttons generated using button_to.
 class ButtonToComponent < ViewComponent::Base
   include Mixins::UtilityMixins
-  include Mixins::ButtonMixins
 
   attr_reader :link, :method, :data, :classes
 
@@ -14,8 +13,7 @@ class ButtonToComponent < ViewComponent::Base
     @method = method
     @data = options[:data]
     @classes = merge_classes([
-                               CLASS_LIST,
-                               color_classes(color: options[:color] || :blue, outline: options[:outline]),
+                               UtilityClasses.for(:btn, variant: (options[:variant] || :solid_blue)),
                                options[:classes]
                              ])
   end

@@ -12,38 +12,18 @@ describe ButtonTagComponent, type: :component do
       expect(render_component).to have_xpath(".//button[@type='submit']")
     end
 
-    it 'renders the default color class' do
+    it 'renders the default variant classes' do
       expect(render_component).to have_css('button.bg-blue-500.text-white.border-blue-500')
     end
   end
 
-  context 'with color specified' do
+  context 'with variant specified' do
     subject(:render_component) do
-      render_inline(described_class.new(options: { color: 'red' })) { 'Sample Text' }
+      render_inline(described_class.new(options: { variant: :outline_blue })) { 'Sample Text' }
     end
 
-    it 'renders the correct classes for the provided color' do
-      expect(render_component).to have_css('button.bg-red-500.text-white.border-red-500')
-    end
-  end
-
-  context 'with outline specified' do
-    subject(:render_component) do
-      render_inline(described_class.new(options: { outline: true })) { 'Sample Text' }
-    end
-
-    it 'renders the correct outline classes' do
+    it 'renders the correct classes for the provided variant' do
       expect(render_component).to have_css('button.bg-transparent.text-blue-500.border-blue-500')
-    end
-  end
-
-  context 'with both color and outline specified' do
-    subject(:render_component) do
-      render_inline(described_class.new(options: { color: 'red', outline: true })) { 'Sample Text' }
-    end
-
-    it 'renders the correct classes for the provided color with outline' do
-      expect(render_component).to have_css('button.bg-transparent.text-red-500.border-red-500')
     end
   end
 

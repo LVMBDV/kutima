@@ -30,7 +30,7 @@ Rails.application.configure do
   config.assets.css_compressor = :purger
   # rubocop:disable Layout/LineLength
   config.assets.css_compressor = Tailwindcss::Compressor.new(
-    files_with_class_names: Rails.root.glob('app/components/**/**/*.*') + Rails.root.glob('app/views/**/*.*') + Rails.root.glob('app/helpers/**/*.rb') + Rails.root.glob('app/javascript/**/*.js')
+    files_with_class_names: Rails.root.glob('app/components/**/**/*.*') + Rails.root.glob('app/views/**/*.*') + Rails.root.glob('app/helpers/**/*.rb') + Rails.root.glob('app/javascript/**/*.js') + Rails.root.glob('config/utility_classes.yml')
   )
   # rubocop:enable Layout/LineLength
 
