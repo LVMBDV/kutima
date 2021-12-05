@@ -16,6 +16,7 @@ gem 'rails', '~> 7.0.0.alpha2'
 gem 'redis'
 gem 'sidekiq'
 gem 'tailwindcss-rails'
+gem 'utility_classes'
 gem 'view_component', require: 'view_component/engine'
 gem 'webpacker'
 

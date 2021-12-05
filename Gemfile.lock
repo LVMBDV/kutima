@@ -303,6 +303,8 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)
+    utility_classes (0.1.1)
+      rails (>= 6)
     view_component (2.35.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
@@ -364,6 +366,7 @@ DEPENDENCIES
   sidekiq
   spring
   tailwindcss-rails
+  utility_classes
   view_component
   web-console
   webmock
