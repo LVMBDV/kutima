@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'aws-sdk-rails'
+gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
 gem 'devise', git: 'https://github.com/heartcombo/devise', branch: 'main'
 gem 'hotwire-rails'
