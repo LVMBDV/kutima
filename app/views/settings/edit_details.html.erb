@@ -2,8 +2,17 @@
   <%= link_to account_details_path, class: 'hover:text-gray-500 ml-2' do %>
     <i class="fas fa-arrow-left fa-lg" title="Back"></i>
   <% end %>
-  <%= tag.h2 'Edit Details', class: UtilityClasses.for(:heading, variant: :lg) %>
   <%= form_for(@user, url: update_account_details_path, method: :put) do |f| %>
+    <%= f.fields_for :profile do |profile_form| %>
+      <%= render(FormGroupComponent.new(form: profile_form, field: :first_name, errors: @user.profile.errors)) do |c| %>
+        <% c.label('First Name') %>
+        <% c.text(html_options: {}) %>
+      <% end %>
+      <%= render(FormGroupComponent.new(form: profile_form, field: :last_name, errors: @user.profile.errors)) do |c| %>
+        <% c.label('Last Name') %>
+        <% c.text(html_options: {}) %>
+      <% end %>
+    <% end %>
     <%= tag.div do %>
       <p class="block mx-auto my-2 p-4 w-full md:w-3/4 text-center text-yellow-500 dark:text-yellow-50 bg-yellow-50 dark:bg-yellow-500 border-2 border-yellow-500 rounded-md">
         Currently waiting confirmation for: <%= @user.unconfirmed_email %>

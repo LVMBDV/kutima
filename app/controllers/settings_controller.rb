@@ -6,7 +6,6 @@ class SettingsController < ApplicationController
   include Onboardable
 
   before_action :set_user
-  before_action :set_profile, only: :show
 
   # GET /settings
   def show; end
@@ -78,7 +77,7 @@ class SettingsController < ApplicationController
   end
 
   def update_details_params
-    params.require(:user).permit(%i[email username])
+    params.require(:user).permit(:email, :username, profile_attributes: %i[id first_name last_name])
   end
 
   def update_password_params

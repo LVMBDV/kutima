@@ -1,8 +1,16 @@
 <%= turbo_frame_tag :details do %>
-  <div class="ml-1 mb-4">
+  <div class="mr-1 mb-4 text-right">
     <%= link_to edit_account_details_path, class: 'no-underline focus:outline-none transition-colors text-yellow-400 hover:text-yellow-500' do %>
       <i class="fas fa-pencil-alt fa-lg" title="Edit"></i>
     <% end %>
+  </div>
+  <div class="my-4 ml-1">
+    <p class="font-semibold mb-1">First name:</p>
+    <p><%= @user.profile.first_name %></p>
+  </div>
+  <div class="my-4 ml-1">
+    <p class="font-semibold mb-1">Last name:</p>
+    <p><%= @user.profile.last_name %></p>
   </div>
   <div class="my-4 ml-1">
     <p class="font-semibold mb-1">Email:</p>
