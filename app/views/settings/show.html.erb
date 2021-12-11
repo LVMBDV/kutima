@@ -1,0 +1,28 @@
+<%= turbo_frame_tag dom_id(@profile) do %>
+  <%= render 'profiles/profile', profile: @profile %>
+<% end %>
+<%= turbo_frame_tag dom_id(@user) do %>
+  <%= render(CardComponent.new) do |c| %>
+    <% c.body do %>
+      <%= tag.h2 'Account Settings', class: UtilityClasses.for(:heading, variant: :xl) %>
+      <div class="border-2 border-solid border-gray-200 dark:border-gray-600 rounded-md my-2 p-2">
+        <%= turbo_frame_tag :details do %>
+          <%= render template: 'settings/details' %>
+        <% end %>
+      </div>
+      <%= turbo_frame_tag :password do %>
+        <%= render template: 'settings/password' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+  <%= render(CardComponent.new) do |c| %>
+    <% c.body do %>
+      <p class="text-center md:w-3/4 mx-auto">No longer satisfied with Kutima? Delete your account at anytime, and we won't hassle you.</p>
+      <div class="flex flex-wrap justify-center my-4 mx-auto">
+        <%= render(ButtonToComponent.new(link: delete_account_path, method: :get , options: { variant: :solid_red, data: { turbo: 'false' }})) do %>
+          Delete Account
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>

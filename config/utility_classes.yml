@@ -3,14 +3,24 @@ btn:
   variants:
     solid_blue: 'bg-blue-500 text-white border-blue-500 hover:bg-blue-700'
     outline_blue: 'bg-transparent text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white'
+    solid_yellow: 'bg-yellow-500 text-white border-yellow-500 hover:bg-yellow-700'
+    outline_yellow: 'bg-transparent text-yellow-500 border-yellow-500 hover:bg-yellow-500 hover:text-white'
+    solid_red: 'bg-red-500 text-white border-red-500 hover:bg-red-700'
+    outline_red: 'bg-transparent text-red-500 border-red-500 hover:bg-red-500 hover:text-white'
 card:
   base: 'p-0 max-w-lg mx-auto my-4 bg-white dark:bg-gray-700 rounded-xl shadow-md items-center'
 card_header:
   base: 'flex justify-between flex-row flex-wrap text-sm px-2 pt-4'
 card_body:
   base: 'm-0 px-3 py-6'
+heading:
+  base: 'font-semibold text-center mb-4 text-xl'
+  variants:
+    lg: 'text-2xl'
+    xl: 'text-4xl'
+    xxl: 'text-6xl'
 hero:
-  base: 'flex flex-row flex-wrap justify-center text-black dark:text-white p-6 md:p-10 lg:p-16 test'
+  base: 'flex flex-row flex-wrap justify-center p-6 md:p-10 lg:p-16 test'
 hero_headline:
   base: 'flex-100 text-center break-words text-6xl mb-8'
 hero_lede:
@@ -18,7 +28,7 @@ hero_lede:
 input:
   base: 'block w-full appearance-none leading-loose transition-colors dark:bg-gray-600 dark:text-white placeholder-gray-400 hover:border-gray-400 focus:border-blue-500 rounded my-2'
 label:
-  base: 'text-gray-900 dark:text-white font-semibold'
+  base: 'font-semibold'
 life_area_tag:
   base: 'px-1 border-2 border-solid rounded-md'
   variants:
@@ -29,4 +39,6 @@ life_area_tag:
     intellectual: 'text-yellow-500 border-yellow-500'
     family: 'text-pink-400 border-pink-400'
     social: 'text-yellow-700 border-yellow-700'
+link:
+  base: 'text-blue-500 hover:text-blue-700 underline'
 

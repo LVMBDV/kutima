@@ -1,0 +1,26 @@
+<%= turbo_frame_tag :details do %>
+  <%= link_to account_details_path, class: 'hover:text-gray-500 ml-2' do %>
+    <i class="fas fa-arrow-left fa-lg" title="Back"></i>
+  <% end %>
+  <%= tag.h2 'Edit Details', class: UtilityClasses.for(:heading, variant: :lg) %>
+  <%= form_for(@user, url: update_account_details_path, method: :put) do |f| %>
+    <%= tag.div do %>
+      <p class="block mx-auto my-2 p-4 w-full md:w-3/4 text-center text-yellow-500 dark:text-yellow-50 bg-yellow-50 dark:bg-yellow-500 border-2 border-yellow-500 rounded-md">
+        Currently waiting confirmation for: <%= @user.unconfirmed_email %>
+      </p>
+    <% end if Devise.mappings[:user].confirmable? && @user.pending_reconfirmation? %>
+    <%= render(FormGroupComponent.new(form: f, field: :email, errors: @user.errors)) do |c| %>
+      <%= c.label 'Email' %>
+      <%= c.text html_options: { type: 'email', autofocus: true, autocomplete: 'email' } %>
+    <% end %>
+    <%= render(FormGroupComponent.new(form: f, field: :username, errors: @user.errors)) do |c| %>
+      <%= c.label 'Username' %>
+      <%= c.text html_options: { autocomplete: 'off', autocorrect: 'off', autocapitalize: 'off', spellcheck: false } %>
+    <% end %>
+    <%= tag.div class: 'text-center mt-6 mb-4' do %>
+      <%= render(ButtonTagComponent.new) do %>
+          Save Changes
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,22 @@
+<%= render(CardComponent.new) do |c| %>
+  <% c.body do %>
+    <%= link_to settings_path, class: 'text-gray-900 dark:text-white hover:text-gray-500 ml-2' do %>
+      <i class="fas fa-arrow-left fa-lg" title="Back"></i>
+    <% end %>
+    <%= tag.h2 'Delete Account', class: UtilityClasses.for(:heading, variant: :xl) %>
+    <%= form_for(@user, url: destroy_account_path, method: :delete) do |f| %>
+      <p class="block mx-auto my-2 p-4 w-full text-center text-red-700 bg-red-200 border-2 border-red-700 rounded-md">
+        Enter your password to confirm that you want to delete your account.
+      </p>
+      <%= render(FormGroupComponent.new(form: f, field: :password, errors: @user.errors)) do |c| %>
+        <%= c.label 'Password' %>
+        <%= c.text html_options: { type: 'password', autofocus: true, autocomplete: 'new-password' } %>
+      <% end %>
+      <%= tag.div class: 'text-center mt-6 mb-4' do %>
+        <%= render(ButtonTagComponent.new(options: { variant: :solid_red, data: { turbo: 'false' }})) do %>
+          Delete Account
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

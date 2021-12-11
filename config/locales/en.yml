@@ -8,9 +8,9 @@ en:
           - name: 'Dashboard'
             path: dashboard_path
             icon_class: 'fas fa-chart-line'
-          - name: 'Profile'
-            path: user_profile_path
-            icon_class: 'fas fa-user'
+          - name: 'Settings'
+            path: settings_path
+            icon_class: 'fas fa-cog'
           - name: 'Sign out'
             path: destroy_user_session_path
             icon_class: 'fas fa-sign-out-alt'

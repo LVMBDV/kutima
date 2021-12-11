@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(@profile) do %>
   <%= render(CardComponent.new) do |c| %>
     <% c.header do %>
-      <%= link_to profile_path(@profile), class: 'text-gray-900 dark:text-white hover:text-gray-500 ml-2', data: { 'turbo-frame': dom_id(@profile) } do %>
+      <%= link_to settings_path, class: 'text-gray-900 dark:text-white hover:text-gray-500 ml-2', data: { 'turbo-frame': dom_id(@profile) } do %>
         <i class="fas fa-arrow-left fa-lg" title="Back"></i>
       <% end %>
     <% end %>
