@@ -1,26 +1,26 @@
 <%= turbo_frame_tag :details do %>
-  <div class="mr-1 mb-4 text-right">
+  <div class="mr-1 mb-2 text-right">
     <%= link_to edit_account_details_path, class: 'no-underline focus:outline-none transition-colors text-yellow-400 hover:text-yellow-500' do %>
       <i class="fas fa-pencil-alt fa-lg" title="Edit"></i>
     <% end %>
   </div>
-  <div class="my-4 ml-1">
-    <p class="font-semibold mb-1">First name:</p>
-    <p><%= @user.profile.first_name %></p>
+  <div class="mb-4 mt-2 ml-2 p-2">
+    <p class="font-semibold mb-1">First Name</p>
+    <p class="m-2 p-2"><%= @user.profile.first_name %></p>
   </div>
-  <div class="my-4 ml-1">
-    <p class="font-semibold mb-1">Last name:</p>
-    <p><%= @user.profile.last_name %></p>
+  <div class="mb-4 mt-2 ml-2 p-2">
+    <p class="font-semibold mb-1">Last Name</p>
+    <p class="m-2 p-2"><%= @user.profile.last_name %></p>
   </div>
-  <div class="my-4 ml-1">
-    <p class="font-semibold mb-1">Email:</p>
-    <p><%= @user.email %></p>
+  <div class="mb-4 mt-2 ml-2 p-2">
+    <p class="font-semibold mb-1">Email</p>
+    <p class="m-2 p-2"><%= @user.email %></p>
     <%= tag.p class: 'text-green-500' do %>
       <i class="fa fa-check"></i>&nbsp;Confirmed</p>
     <% end if @user.confirmed_at %>
   </div>
-  <div class="my-4 ml-1">
-    <p class="font-semibold mb-1">Username:</p>
-    <p><%= @user.username %></p>
+  <div class="mb-4 mt-2 ml-2 p-2">
+    <p class="font-semibold mb-1">Username</p>
+    <p class="m-2 p-2"><%= @user.username %></p>
   </div>
 <% end %>
